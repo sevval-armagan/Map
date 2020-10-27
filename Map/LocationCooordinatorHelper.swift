@@ -9,18 +9,18 @@ import Foundation
 import MapKit
 import CoreLocation
 
-protocol CoordinatorHelperProtocol {
-    func getAddressFromLatLon(pdblLatitude: String, withLongitude pdblLongitude: String) -> Adress
+protocol LocationCooordinatorHelperProtocol {
+    func addressAt(latitude: String, withLongitude longitude: String) -> Adress
 }
 
-class CoordinatorHelper: CoordinatorHelperProtocol{
+class LocationCooordinatorHelper: LocationCooordinatorHelperProtocol {
+   
     
-    
-    func getAddressFromLatLon(pdblLatitude: String, withLongitude pdblLongitude: String) -> Adress {
+    func addressAt(latitude: String, withLongitude longitude: String) -> Adress {
         var center : CLLocationCoordinate2D = CLLocationCoordinate2D()
-        let lat: Double = Double("\(pdblLatitude)")!
+        let lat: Double = Double("\(latitude)")!
         //21.228124
-        let lon: Double = Double("\(pdblLongitude)")!
+        let lon: Double = Double("\(longitude)")!
         //72.833770
         let ceo: CLGeocoder = CLGeocoder()
         center.latitude = lat

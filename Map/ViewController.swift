@@ -14,7 +14,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate{
     @IBOutlet weak var mapView: MKMapView!
     var locationManager: CLLocationManager!
     
-    var x = CoordinatorHelper()
+    var x = LocationCooordinatorHelper()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,7 +39,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate{
             let locationInView = sender.location(in: mapView)
             let locationOnMap = mapView.convert(locationInView, toCoordinateFrom: mapView)
             addAnnotation(location: locationOnMap)
-            x.getAddressFromLatLon(pdblLatitude: String(locationOnMap.latitude), withLongitude: String(locationOnMap.longitude))
+            x.addressAt(latitude: String(locationOnMap.latitude), withLongitude: String(locationOnMap.longitude))
             print(locationOnMap)
         }
     }
@@ -60,6 +60,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate{
         }
     }
 }
+
 
 extension ViewController: MKMapViewDelegate{
     
